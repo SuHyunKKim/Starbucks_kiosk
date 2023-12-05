@@ -15,7 +15,8 @@ import java.awt.event.ActionListener;
 public class MainMenuPanel extends JPanel {
     public MainMenuPanel() {
         setLayout(new BorderLayout());
-
+        
+        // 상단 패널 추가
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setPreferredSize(new Dimension(540, 200));
@@ -26,19 +27,15 @@ public class MainMenuPanel extends JPanel {
         headerPanel.add(headerLabel1, BorderLayout.WEST);
 
         ImageIcon headerImage2 = new ImageIcon(new ImageIcon("images/logo/DguLogo.png").getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-//        ImageIcon icon = new ImageIcon(new ImageIcon(info[0]).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
         JLabel headerLabel2 = new JLabel(headerImage2);
         headerLabel2.setPreferredSize(new Dimension(200, 200));
         headerPanel.add(headerLabel2, BorderLayout.EAST);
 
         add(headerPanel, BorderLayout.NORTH);
 
-//        ImageIcon headerImage = new ImageIcon("images/logo/StarbucksMain.png"); // 이미지 경로에 맞게 수정
-//        JLabel headerLabel = new JLabel(headerImage);
-//        headerLabel.setPreferredSize(new Dimension(540, 200));
-//        add(headerLabel, BorderLayout.NORTH);
 
-        // 중간 탭패널 추가
+
+        // 중간 패널 추가
         JTabbedPane tabbedPane = new JTabbedPane();
         Tea tea = new Tea();
         Espresso espresso = new Espresso();
@@ -59,33 +56,33 @@ public class MainMenuPanel extends JPanel {
 
         add(tabbedPane, BorderLayout.CENTER);
 
-        // 아래 상품 담기 창 추가
+        // 하단 버튼 패널 추가
         JPanel kioskPanel = new JPanel();
         JButton cartButton = new JButton("장바구니");
         JButton checkoutButton = new JButton("결제하기");
-
+        
+        // 장바구니 버튼 동작
         cartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 장바구니 버튼 클릭 시 수행할 동작
                 showBasketWindow();
             }
         });
 
+        // 결제하기 버튼 동작
         checkoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 결제하기 버튼 클릭 시 수행할 동작
                 showPaymentWindow();
             }
         });
 
         kioskPanel.add(cartButton);
         kioskPanel.add(checkoutButton);
-
         add(kioskPanel, BorderLayout.SOUTH);
     }
 
+    // 장바구니 창 띄우는 메소드
     private void showBasketWindow() {
         // Create and show the Basket window
         JFrame basketFrame = new JFrame("Basket");
@@ -96,20 +93,9 @@ public class MainMenuPanel extends JPanel {
         basketFrame.setVisible(true);
     }
 
+    // 결제 창 띄우는 메소드
     private void showPaymentWindow() {
         Payment paymentWindow = new Payment();
         paymentWindow.setVisible(true);
     }
-
-
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> {
-//            JFrame frame = new JFrame("Main Menu Panel");
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.getContentPane().add(new MainMenuPanel());
-//            frame.setSize(540, 960);
-//            frame.setLocationRelativeTo(null);
-//            frame.setVisible(true);
-//        });
-//    }
 }

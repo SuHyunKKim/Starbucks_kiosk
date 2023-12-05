@@ -8,23 +8,22 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 public class OptionWindow extends JFrame {
 
     private String imagePath;
     private String productName;
     private int productPrice;
-
+    
+    // 상품정보를 설정할 메소드
     public void setProductInfo(String image, String name, int price) {
         imagePath = image;
         productName = name;
         productPrice = price;
-
         updateUI();
     }
 
+    // 이미지, 상품명, 가격 라벨들을 갱신하는 메소드
     private void updateUI() {
-        // 이미지, 상품명, 가격 라벨들을 갱신
         productImageLabel.setIcon(new ImageIcon(imagePath));
         productNameLabel.setText(productName);
         productPriceLabel.setText(productPrice+"원");
@@ -40,58 +39,38 @@ public class OptionWindow extends JFrame {
     private JButton decreaseButton, increaseButton;
     private JLabel quantityLabel, priceLabel;
     private JButton cancelButton, addToCartButton;
-
     private int quantity = 1;
-//    private double basePrice; // 기본 상품 가격
 
     public OptionWindow() {
         setTitle("Option Window");
+        setLayout(new BorderLayout());
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        setLayout(new BorderLayout());
-
-        // 상품 정보 패널
+        // 왼쪽의 상품 이미지, 상품명, 가격 라벨 패널
         JPanel productInfoPanel = createOptionPanel("");
-//        JLabel productImageLabel = new JLabel(new ImageIcon(imagePath));
-//        JLabel productNameLabel = new JLabel(productName);
-//        JLabel productPriceLabel = new JLabel("$" + productPrice);
         JPanel productInfoinsidePanel = new JPanel(new BorderLayout());
         productInfoinsidePanel.add(productImageLabel, BorderLayout.NORTH);
         productInfoinsidePanel.add(productNameLabel, BorderLayout.CENTER);
         productInfoinsidePanel.add(productPriceLabel, BorderLayout.SOUTH);
         productInfoPanel.add(productInfoinsidePanel);
-        /*
-        productInfoPanel.add(productImageLabel);
-        productInfoPanel.add(productNameLabel);
-        productInfoPanel.add(productPriceLabel);
-        */
 
         add(productInfoPanel, BorderLayout.WEST);
 
 
         // ICED, HOT 선택 패널
         JPanel temperaturePanel = createOptionPanel("Temperature");
-
-        temperatureButtonGroup = new ButtonGroup(); // Initialize ButtonGroup
+        temperatureButtonGroup = new ButtonGroup();
 
         icedButton = new JToggleButton("ICED");
         hotButton = new JToggleButton("HOT");
 
-        // Add buttons to ButtonGroup
         temperatureButtonGroup.add(icedButton);
         temperatureButtonGroup.add(hotButton);
 
         temperaturePanel.add(icedButton);
         temperaturePanel.add(hotButton);
-/*
-        // ICED, HOT 선택 패널
-        JPanel temperaturePanel = createOptionPanel("Temperature");
-        icedButton = new JButton("ICED");
-        hotButton = new JButton("HOT");
-        temperaturePanel.add(icedButton);
-        temperaturePanel.add(hotButton);
-*/
+
         // 컵 사이즈 선택 패널
         JPanel sizePanel = createOptionPanel("Size");
         JToggleButton sizeButton1 = new JToggleButton("Tall");
@@ -110,7 +89,7 @@ public class OptionWindow extends JFrame {
         sizePanel.add(sizeButton3);
         sizePanel.add(sizeButton4);
 
-        // 개인컵 사용 체크박스 패널
+        // 개인컵 사용 여부 체크박스 패널
         JPanel personalCupPanel = createOptionPanel("");
         personalCupCheckBox = new JCheckBox("Personal Cup");
         personalCupPanel.add(personalCupCheckBox);
@@ -127,14 +106,14 @@ public class OptionWindow extends JFrame {
         quantityPanel.add(increaseButton);
         quantityPanel.add(priceLabel);
 
-        // 취소 및 장바구니 담기 버튼 패널
+        // 취소 및 장바구니 버튼 패널
         JPanel buttonPanel = createOptionPanel("");
         cancelButton = new JButton("Cancel");
         addToCartButton = new JButton("Add to Cart");
         buttonPanel.add(cancelButton);
         buttonPanel.add(addToCartButton);
 
-
+        // 상품 옵션들을 담을 오른쪽 패널 생성
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new GridLayout(5, 1));
         rightPanel.add(createBorderLayoutPanel(temperaturePanel, BorderLayout.NORTH));
@@ -143,8 +122,8 @@ public class OptionWindow extends JFrame {
         rightPanel.add(createBorderLayoutPanel(quantityPanel, BorderLayout.NORTH));
         rightPanel.add(createBorderLayoutPanel(buttonPanel, BorderLayout.NORTH));
         add(rightPanel, BorderLayout.CENTER);
-        
-        // 이벤트 핸들러 등록
+
+        // 각종 옵션 버튼에 대한 이벤트를 수행하는 리스너들
         icedButton.addActionListener(e -> handleTemperatureButton("ICED"));
         hotButton.addActionListener(e -> handleTemperatureButton("HOT"));
 
@@ -161,10 +140,8 @@ public class OptionWindow extends JFrame {
         cancelButton.addActionListener(e -> dispose());
         addToCartButton.addActionListener(e -> addToCart());
 
-        // 창을 보이게 설정
         setVisible(true);
     }
-
 
     private String Temp;
     private String Size;
@@ -172,11 +149,8 @@ public class OptionWindow extends JFrame {
     private String Quantity;
     private int TotalPrice;
 
+    // 음료 온도 선택에 따라 온도를 저장하는 메소드
     private void handleTemperatureButton(String temperature) {
-        // ICED 또는 HOT 버튼을 눌렀을 때의 동작
-
-//        JToggleButton selectedButton = (JToggleButton) temperatureButtonGroup.getSelection();
-
         if (temperature == "ICED") {
             Temp = "아이스";
         } else if (temperature == "HOT") {
@@ -184,6 +158,7 @@ public class OptionWindow extends JFrame {
         }
     }
 
+    // 컵 사이즈 선택에 따라 사이즈를 저장하는 메소드
     private void handleSizeButton(int size) {
         if (size == 1) {
             Size = "Tall";
@@ -196,6 +171,7 @@ public class OptionWindow extends JFrame {
         }
     }
 
+    // 개인컵 사용 여부에 따라 컵 사용 여부를 저장하는 메소드
     private void handlePersonalCupCheckBox() {
         if (personalCupCheckBox.isSelected() || (personalCupCheckBox.getModel().isSelected())) {
             Cup = "개인컵O";
@@ -204,7 +180,7 @@ public class OptionWindow extends JFrame {
         }
     }
 
-
+    // 수량 조절 버튼에 따라 수량을 저장 및 총 가격 계산하는 메소드
     private void handleQuantityButton(int a) {
         quantity += a;
         if (quantity < 1) {
@@ -215,20 +191,18 @@ public class OptionWindow extends JFrame {
         priceLabel.setText("Price: " + calculateTotalPrice()+"원");
     }
 
+    // 수량과 가격을 곱해서 총 가격 계산하는 메소드
     private int calculateTotalPrice() {
-        // 수량과 기본 가격을 곱하여 총 가격 계산
         return quantity * productPrice;
     }
 
-
-
+    // 옵션 패널을 일일히 생성하기 위한 메소드
     private JPanel createOptionPanel(String optionName) {
         JPanel panel = new JPanel();
         JLabel label = new JLabel(optionName);
         panel.add(label);
         return panel;
     }
-
     private JPanel createBorderLayoutPanel(JPanel panel, String position) {
         JPanel borderLayoutPanel = new JPanel(new BorderLayout());
         borderLayoutPanel.add(panel, position);
@@ -239,6 +213,8 @@ public class OptionWindow extends JFrame {
     public int getQuantity() {return quantity;}
     public String getProductName() {return productName;}
 
+    // 장바구니에 상품을 추가하기 위한 메소드
+    // cart.txt에 상품 정보를 저장 후, Basket 클래스에서 이 파일을 불러와 장바구니에 추가한다.
     private void addToCart() {
         String productInfo = String.format(
                 "%s,%s,%s,%s,%s,%s,%s\n",
@@ -253,6 +229,7 @@ public class OptionWindow extends JFrame {
         dispose();
     }
 
+    // 현재 시간을 반환하는 메소드 - 장바구니에 상품을 추가할 때 사용
     private String getCurrentTime() {
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
