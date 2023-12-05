@@ -1,8 +1,8 @@
 package OrderPages;
 
 import OrderPages.Functions.Basket;
-import OrderPages.Functions.OptionWindow;
 import OrderPages.Functions.Payment;
+import OrderPages.MenuPanel.ETC;
 import OrderPages.MenuPanel.Tea;
 import OrderPages.MenuPanel.Espresso;
 import OrderPages.MenuPanel.Frappuccino;
@@ -16,22 +16,39 @@ public class MainMenuPanel extends JPanel {
     public MainMenuPanel() {
         setLayout(new BorderLayout());
 
-        // 위쪽 이미지 추가
-        ImageIcon headerImage = new ImageIcon("images/logo/StarbucksMain.png"); // 이미지 경로에 맞게 수정
-        JLabel headerLabel = new JLabel(headerImage);
-        headerLabel.setPreferredSize(new Dimension(540, 200));
-        add(headerLabel, BorderLayout.NORTH);
+        JPanel headerPanel = new JPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setPreferredSize(new Dimension(540, 200));
+
+        ImageIcon headerImage1 = new ImageIcon("images/logo/Starbucks.png");
+        JLabel headerLabel1 = new JLabel(headerImage1);
+        headerLabel1.setPreferredSize(new Dimension(330, 200));
+        headerPanel.add(headerLabel1, BorderLayout.WEST);
+
+        ImageIcon headerImage2 = new ImageIcon(new ImageIcon("images/logo/DguLogo.png").getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+//        ImageIcon icon = new ImageIcon(new ImageIcon(info[0]).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+        JLabel headerLabel2 = new JLabel(headerImage2);
+        headerLabel2.setPreferredSize(new Dimension(200, 200));
+        headerPanel.add(headerLabel2, BorderLayout.EAST);
+
+        add(headerPanel, BorderLayout.NORTH);
+
+//        ImageIcon headerImage = new ImageIcon("images/logo/StarbucksMain.png"); // 이미지 경로에 맞게 수정
+//        JLabel headerLabel = new JLabel(headerImage);
+//        headerLabel.setPreferredSize(new Dimension(540, 200));
+//        add(headerLabel, BorderLayout.NORTH);
 
         // 중간 탭패널 추가
         JTabbedPane tabbedPane = new JTabbedPane();
         Tea tea = new Tea();
         Espresso espresso = new Espresso();
         Frappuccino frappuccino = new Frappuccino();
+        ETC etc = new ETC();
         JPanel tab4Panel = new JPanel();
         tabbedPane.addTab("Tea", tea);
         tabbedPane.addTab("Espresso", espresso);
         tabbedPane.addTab("Frappuccino", frappuccino);
-        tabbedPane.addTab("Tab 4", tab4Panel);
+        tabbedPane.addTab("ETC", etc);
 
         // 폭 540, 높이 500으로 설정
         Dimension tabPanelSize = new Dimension(540, 500);
