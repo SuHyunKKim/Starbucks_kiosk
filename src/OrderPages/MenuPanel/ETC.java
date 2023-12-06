@@ -48,21 +48,4 @@ public class ETC extends JPanel {
             colorLabel.setForeground(textColor);
         }
     }
-
-    /*
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("ETC Example");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(300, 230);
-
-            // ETC 패널 추가
-            ETC etcPanel = new ETC();
-            frame.add(etcPanel);
-
-            frame.setVisible(true);
-        });
-    }
-    */
-
 }
