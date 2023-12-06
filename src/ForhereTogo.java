@@ -17,22 +17,22 @@ public class ForhereTogo extends JFrame {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 
         // For Here 버튼 및 버튼 클릭시 수행 동작
-        JButton forHereButton = new JButton("For Here");
+        JButton forHereButton = new JButton("매장");
         forHereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "For Here를 선택했습니다.");
+                JOptionPane.showMessageDialog(null, "매장을 선택했습니다.");
                 goToNextScreen();
             }
         });
         buttonPanel.add(forHereButton);
 
         // To Go 버튼 및 버튼 클릭시 수행 동작
-        JButton toGoButton = new JButton("To Go");
+        JButton toGoButton = new JButton("포장");
         toGoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "To Go를 선택했습니다.");
+                JOptionPane.showMessageDialog(null, "포장 선택했습니다.");
                 goToNextScreen();
             }
         });
@@ -44,14 +44,13 @@ public class ForhereTogo extends JFrame {
     // 버튼 클릭시 다음 화면으로 이동하는 기능
     private void goToNextScreen() {
         SwingUtilities.invokeLater(() -> {
-            JFrame mainMenuFrame = new JFrame("Main Menu Panel");
+            JFrame mainMenuFrame = new JFrame("상품 선택");
             mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             mainMenuFrame.getContentPane().add(new MainMenuPanel());
             mainMenuFrame.setSize(540, 960);
             mainMenuFrame.setLocationRelativeTo(null);
             mainMenuFrame.setVisible(true);
 
-            // Close the current ForhereTogo frame
             dispose();
         });
     }

@@ -42,7 +42,7 @@ public class OptionWindow extends JFrame {
     private int quantity = 1;
 
     public OptionWindow() {
-        setTitle("Option Window");
+        setTitle("상세 옵션 선택");
         setLayout(new BorderLayout());
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -108,8 +108,8 @@ public class OptionWindow extends JFrame {
 
         // 취소 및 장바구니 버튼 패널
         JPanel buttonPanel = createOptionPanel("");
-        cancelButton = new JButton("Cancel");
-        addToCartButton = new JButton("Add to Cart");
+        cancelButton = new JButton("취소");
+        addToCartButton = new JButton("장바구니 담기");
         buttonPanel.add(cancelButton);
         buttonPanel.add(addToCartButton);
 
@@ -208,7 +208,6 @@ public class OptionWindow extends JFrame {
         borderLayoutPanel.add(panel, position);
         return borderLayoutPanel;
     }
-
 
     public int getQuantity() {return quantity;}
     public String getProductName() {return productName;}

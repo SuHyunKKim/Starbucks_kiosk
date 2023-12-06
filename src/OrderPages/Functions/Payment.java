@@ -13,7 +13,7 @@ public class Payment extends JFrame {
     private JLabel totalPriceLabel;
 
     public Payment() {
-        setTitle("Payment");
+        setTitle("결제 창");
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 600);

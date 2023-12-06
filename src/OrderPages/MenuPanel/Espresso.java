@@ -21,7 +21,7 @@ public class Espresso extends JPanel {
         selectedProductPrice = price;
     }
 
-    // 상품 이미지, 이름, 가격
+     // 상품 이미지, 이름, 가격
      private String[][] productInfo = {
             {"images/menu/espresso/americano.jpg", "아메리카노", "3000"},
             {"images/menu/espresso/banillaflatwhite.jpg", "바닐라 플랫 화이트", "3500"},
@@ -48,7 +48,7 @@ public class Espresso extends JPanel {
             // 상품 정보를 담을 패널 생성
             JPanel labelPanel = new JPanel(new BorderLayout());
             JLabel nameLabel = new JLabel(info[1]);
-            JLabel priceLabel = new JLabel(info[2]);
+            JLabel priceLabel = new JLabel(info[2]+"원");
             labelPanel.add(nameLabel, BorderLayout.NORTH);
             labelPanel.add(priceLabel, BorderLayout.CENTER);
 
@@ -75,19 +75,4 @@ public class Espresso extends JPanel {
         OptionWindow optionWindow = new OptionWindow();
         optionWindow.setProductInfo(selectedProductImage, selectedProductName, selectedProductPrice);
     }
-
-    /*
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Beverage Menu");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-
-        // Beverage 패널 추가
-        Espresso beveragePanel = new Espresso();
-        frame.add(beveragePanel);
-
-        frame.setVisible(true);
-    }
-     */
-
 }

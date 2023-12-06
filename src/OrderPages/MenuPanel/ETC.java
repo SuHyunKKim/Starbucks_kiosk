@@ -49,6 +49,7 @@ public class ETC extends JPanel {
         }
     }
 
+    /*
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("ETC Example");
@@ -62,4 +63,6 @@ public class ETC extends JPanel {
             frame.setVisible(true);
         });
     }
+    */
+
 }

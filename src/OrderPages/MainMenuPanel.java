@@ -47,7 +47,6 @@ public class MainMenuPanel extends JPanel {
         tabbedPane.addTab("Frappuccino", frappuccino);
         tabbedPane.addTab("ETC", etc);
 
-        // 폭 540, 높이 500으로 설정
         Dimension tabPanelSize = new Dimension(540, 500);
         tea.setPreferredSize(tabPanelSize);
         espresso.setPreferredSize(tabPanelSize);
@@ -85,10 +84,10 @@ public class MainMenuPanel extends JPanel {
     // 장바구니 창 띄우는 메소드
     private void showBasketWindow() {
         // Create and show the Basket window
-        JFrame basketFrame = new JFrame("Basket");
+        JFrame basketFrame = new JFrame("장바구니");
         basketFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         basketFrame.getContentPane().add(new Basket());
-        basketFrame.setSize(400, 200);
+        basketFrame.setSize(400, 400);
         basketFrame.setLocationRelativeTo(null);
         basketFrame.setVisible(true);
     }

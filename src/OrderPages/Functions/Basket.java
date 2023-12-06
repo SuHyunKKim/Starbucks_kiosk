@@ -87,7 +87,7 @@ public class Basket extends JPanel {
         }
     }
 
-    // 장바구니에서 상품 수량 변경시, cart.txt에 변경된 수량을 저장하는 기능
+    // 장바구니에서 변경된 상품 수량 정보를 반영해서 cart.txt 파일 재작성
     private void updateCart() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("cart.txt"));
@@ -101,7 +101,6 @@ public class Basket extends JPanel {
                     writer.newLine();
                 }
             }
-
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -113,6 +112,7 @@ public class Basket extends JPanel {
         SwingUtilities.getWindowAncestor(this).dispose();
     }
 
+    // 장바구니에 상품을 추가하는 기능 구현을 위한 ProductPanel 클래스
     private class ProductPanel extends JPanel {
         // 상품 관련 정보들을 담을 라벨들과 getter 메소드
         public String getProductName() {return nameLabel.getText();}
