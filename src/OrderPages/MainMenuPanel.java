@@ -33,8 +33,6 @@ public class MainMenuPanel extends JPanel {
 
         add(headerPanel, BorderLayout.NORTH);
 
-
-
         // 중간 패널 추가
         JTabbedPane tabbedPane = new JTabbedPane();
         Tea tea = new Tea();
