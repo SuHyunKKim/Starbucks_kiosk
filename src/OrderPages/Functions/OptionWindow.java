@@ -147,7 +147,6 @@ public class OptionWindow extends JFrame {
     private String Size;
     private String Cup;
     private String Quantity;
-    private int TotalPrice;
 
     // 음료 온도 선택에 따라 온도를 저장하는 메소드
     private void handleTemperatureButton(String temperature) {
