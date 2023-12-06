@@ -71,7 +71,6 @@ public class Tea extends JPanel {
 
     // 버튼 클릭시, 상세 옵션창을 띄우고, 선택된 상품의 정보를 전달하는 메소드
     private void showOptionWindow() {
-        // OptionWindow 인스턴스 생성 및 선택된 상품의 정보 전달
         OptionWindow optionWindow = new OptionWindow();
         optionWindow.setProductInfo(selectedProductImage, selectedProductName, selectedProductPrice);
     }
